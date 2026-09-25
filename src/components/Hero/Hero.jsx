@@ -29,14 +29,18 @@ function Hero() {
         </div>
       </div>
 
-      <div className={styles.trail} aria-hidden="true">
+      <div className={styles.wire} aria-hidden="true">
         {trail.map((name, i) => (
           <Fragment key={name}>
-            <span className={styles.trailNode}>
-              <span className={styles.trailDot} style={{ animationDelay: `${i * 0.4}s` }} />
-              <span className={styles.trailLabel}>{name}</span>
+            <span className={styles.wireStation}>
+              <span className={styles.wireDot} />
+              <span className={styles.wireLabel}>{name}</span>
             </span>
-            {i < trail.length - 1 && <span className={styles.trailLine} />}
+            {i < trail.length - 1 && (
+              <span className={styles.wireLink}>
+                <span className={styles.wireFlow} style={{ animationDelay: `${i * 0.5}s` }} />
+              </span>
+            )}
           </Fragment>
         ))}
       </div>

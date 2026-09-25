@@ -50,54 +50,81 @@
   margin-top: 0.5rem;
 }
 
-.trail {
+.wire {
   position: absolute;
   left: 50%;
-  bottom: clamp(1.5rem, 4vh, 3rem);
+  bottom: clamp(3rem, 8vh, 5rem);
   transform: translateX(-50%);
   z-index: 0;
+  width: min(92%, 640px);
   display: flex;
-  flex-direction: column;
   align-items: center;
   pointer-events: none;
 }
 
-.trailNode {
-  display: flex;
-  flex-direction: column;
+.wireStation {
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.trailDot {
-  width: 6px;
-  height: 6px;
+.wireDot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--color-gray-500);
-  animation: trailPulse 3s ease-in-out infinite;
+  box-shadow: 0 0 0 3px var(--color-white);
 }
 
-.trailLabel {
-  font-size: 0.66rem;
+.wireLabel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+  font-size: 0.62rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-gray-500);
+  white-space: nowrap;
 }
 
-.trailLine {
-  width: 1px;
-  height: 22px;
-  background: linear-gradient(var(--color-gray-300), var(--color-gray-100));
+.wireLink {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  background: var(--color-gray-300);
 }
 
-@keyframes trailPulse {
-  0%,
-  100% {
-    opacity: 0.45;
+.wireFlow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: var(--color-gray-900);
+  animation: wireFlow 2.2s ease-in-out infinite;
+}
+
+@keyframes wireFlow {
+  0% {
+    left: 0;
+    opacity: 0;
   }
-  50% {
-    opacity: 1;
+  12% {
+    opacity: 0.9;
+  }
+  88% {
+    opacity: 0.9;
+  }
+  100% {
+    left: calc(100% - 6px);
+    opacity: 0;
   }
 }
 
