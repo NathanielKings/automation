@@ -1,6 +1,9 @@
+import { Fragment } from 'react'
 import { ArrowRight } from 'lucide-react'
 import Button from '../Button/Button.jsx'
 import styles from './Hero.module.css'
+
+const trail = ['Airtable', 'n8n', 'Gmail', 'Telegram']
 
 function Hero() {
   return (
@@ -24,6 +27,18 @@ function Hero() {
             </Button>
           </div>
         </div>
+      </div>
+
+      <div className={styles.trail} aria-hidden="true">
+        {trail.map((name, i) => (
+          <Fragment key={name}>
+            <span className={styles.trailNode}>
+              <span className={styles.trailDot} style={{ animationDelay: `${i * 0.4}s` }} />
+              <span className={styles.trailLabel}>{name}</span>
+            </span>
+            {i < trail.length - 1 && <span className={styles.trailLine} />}
+          </Fragment>
+        ))}
       </div>
     </section>
   )
