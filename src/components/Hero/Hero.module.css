@@ -1,6 +1,11 @@
 .hero {
   position: relative;
-  padding-block: clamp(4rem, 10vw, 8rem);
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 2rem;
 }
 
 .inner {
@@ -21,7 +26,7 @@
 
 .title {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(2.9rem, 7.5vw, 5.5rem);
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
   font-weight: 900;
   text-transform: uppercase;
   line-height: 0.95;
