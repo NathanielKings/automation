@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import Button from '../Button/Button.jsx'
+import WorkflowVisual from './WorkflowVisual.jsx'
 import styles from './Hero.module.css'
 
 function Hero() {
@@ -27,6 +28,10 @@ function Hero() {
               Let&rsquo;s Talk
             </Button>
           </div>
+        </div>
+
+        <div className={styles.visual}>
+          <WorkflowVisual />
         </div>
       </div>
     </section>
