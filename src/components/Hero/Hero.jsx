@@ -7,11 +7,7 @@ function Hero() {
     <section className={styles.hero} id="home">
       <div className={`container ${styles.inner}`}>
         <div className={styles.content}>
-          <h1 className={styles.title}>
-            <span>Automation</span>
-            <span>without</span>
-            <span>the busywork.</span>
-          </h1>
+          <h1 className={styles.title}>Automation without the busywork.</h1>
 
           <p className={styles.lead}>
             I build practical business automation systems that eliminate repetitive
