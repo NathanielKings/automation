@@ -42,6 +42,10 @@
   letter-spacing: -0.02em;
 }
 
+.line {
+  display: block;
+}
+
 .lead {
   font-size: clamp(1.05rem, 1.6vw, 1.22rem);
   line-height: 1.65;
