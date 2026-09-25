@@ -13,6 +13,7 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  animation: sceneIn 0.9s ease 0.3s both;
 }
 
 .lines {
@@ -34,6 +35,7 @@
   width: 9px;
   height: 9px;
   background: var(--color-black);
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.06);
   transform: translate(-50%, -50%);
   animation: nodePulse 3s ease-in-out infinite;
 }
@@ -61,19 +63,23 @@
 }
 
 .cardFloat {
+  --rotate: 0deg;
   animation: float 6s ease-in-out infinite;
 }
 
 .floatA {
   animation-delay: 0s;
+  --rotate: -4deg;
 }
 
 .floatB {
   animation-delay: -2s;
+  --rotate: 3deg;
 }
 
 .floatC {
   animation-delay: -4s;
+  --rotate: -2.5deg;
 }
 
 .inner {
@@ -132,10 +138,19 @@
 @keyframes float {
   0%,
   100% {
-    transform: translateY(-6px);
+    transform: translateY(-6px) rotate(var(--rotate));
   }
   50% {
-    transform: translateY(6px);
+    transform: translateY(6px) rotate(var(--rotate));
+  }
+}
+
+@keyframes sceneIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
