@@ -9,9 +9,9 @@ function Hero() {
       <div className={`container ${styles.inner}`}>
         <div className={styles.content}>
           <h1 className={styles.title}>
-            <span className={styles.line}>Automation</span>
-            <span className={styles.line}>without</span>
-            <span className={styles.line}>the busywork.</span>
+            <span>Automation</span>
+            <span>without</span>
+            <span>the busywork.</span>
           </h1>
 
           <p className={styles.lead}>
