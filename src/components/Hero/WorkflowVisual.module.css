@@ -1,0 +1,176 @@
+.card {
+  width: 100%;
+  max-width: 460px;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 1.4rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.1rem;
+  margin-bottom: 1.1rem;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-black);
+  animation: statusPulse 2.2s ease-out infinite;
+}
+
+.headerTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-gray-900);
+}
+
+.badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-gray-700);
+  background: var(--color-gray-100);
+  border: 1px solid var(--color-gray-300);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+.flow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.node {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 1rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.node:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-gray-500);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--color-gray-100);
+  color: var(--color-gray-900);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--color-gray-900);
+}
+
+.role {
+  font-size: 0.8rem;
+  color: var(--color-gray-500);
+}
+
+.check {
+  margin-left: auto;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-gray-100);
+  color: var(--color-gray-700);
+}
+
+.connector {
+  position: relative;
+  height: 26px;
+  width: 2px;
+  margin-left: 34px;
+  background: var(--color-gray-300);
+}
+
+.connector::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top: 5px solid var(--color-gray-300);
+}
+
+.pulse {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: var(--color-black);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.12);
+  animation: flow 1.6s ease-in-out infinite;
+}
+
+@keyframes flow {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes statusPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.25);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
