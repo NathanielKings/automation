@@ -7,41 +7,28 @@ function Hero() {
   return (
     <section className={styles.hero} id="home">
       <div className={styles.scene} aria-hidden="true">
-        <svg className={styles.lines} viewBox="0 0 100 100" preserveAspectRatio="none">
-          <polyline points="22,50 70,24 66,72" />
-        </svg>
-        <span className={styles.node} style={{ left: '22%', top: '50%' }} />
-        <span className={styles.node} style={{ left: '70%', top: '24%' }} />
-        <span className={styles.node} style={{ left: '66%', top: '72%' }} />
-
-        <div className={`${styles.cardPos} ${styles.cardA}`}>
-          <div className={`${styles.cardFloat} ${styles.floatA}`}>
-            <WorkflowCard
-              badge="When this happens"
-              title="New record in Airtable"
-              sub="Triggers the workflow"
-            />
-          </div>
+        <div className={`${styles.floatWrap} ${styles.floatA}`}>
+          <WorkflowCard
+            badge="When this happens"
+            title="New record in Airtable"
+            sub="Triggers the workflow"
+          />
         </div>
-
-        <div className={`${styles.cardPos} ${styles.cardB}`}>
-          <div className={`${styles.cardFloat} ${styles.floatB}`}>
-            <WorkflowCard
-              badge="Then do this"
-              title="n8n routes the data"
-              sub="Automates the process"
-            />
-          </div>
+        <span className={styles.connector} />
+        <div className={`${styles.floatWrap} ${styles.floatB}`}>
+          <WorkflowCard
+            badge="Then do this"
+            title="n8n routes the data"
+            sub="Automates the process"
+          />
         </div>
-
-        <div className={`${styles.cardPos} ${styles.cardC}`}>
-          <div className={`${styles.cardFloat} ${styles.floatC}`}>
-            <WorkflowCard
-              badge="Then do this"
-              title="Update via Gmail & Telegram"
-              sub="Delivers the result"
-            />
-          </div>
+        <span className={styles.connector} />
+        <div className={`${styles.floatWrap} ${styles.floatC}`}>
+          <WorkflowCard
+            badge="Then do this"
+            title="Update via Gmail & Telegram"
+            sub="Delivers the result"
+          />
         </div>
       </div>
 
