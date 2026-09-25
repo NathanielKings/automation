@@ -1,0 +1,150 @@
+.section {
+  border-top: 1px solid var(--border);
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.head {
+  max-width: 46rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.heading {
+  font-size: clamp(1.9rem, 4.5vw, 3.1rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--color-gray-500);
+  max-width: 38rem;
+}
+
+.featured {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  border: 1px solid var(--border);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 1.25rem;
+  transition: border-color 0.25s ease;
+}
+
+.featured:hover {
+  border-color: var(--color-gray-700);
+}
+
+.number {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-gray-500);
+}
+
+.featuredTitle {
+  font-size: clamp(1.9rem, 5vw, 3.25rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
+}
+
+.desc {
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--color-gray-500);
+  max-width: 44rem;
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--color-gray-700);
+}
+
+.toolsLabel {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gray-900);
+  transition: color 0.2s ease;
+}
+
+.link svg {
+  transition: transform 0.2s ease;
+}
+
+.link:hover {
+  color: var(--color-gray-500);
+}
+
+.link:hover svg {
+  transform: translateX(4px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  padding: 1.75rem;
+  transition: border-color 0.25s ease;
+}
+
+.card:hover {
+  border-color: var(--color-gray-700);
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.cardDesc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-gray-500);
+}
+
+.card .link {
+  margin-top: auto;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
