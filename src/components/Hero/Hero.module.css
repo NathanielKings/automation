@@ -8,9 +8,77 @@
   padding-block: clamp(2rem, 6vw, 4rem);
 }
 
+.scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lines polyline {
+  fill: none;
+  stroke: var(--color-gray-300);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.node {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: var(--color-black);
+  transform: translate(-50%, -50%);
+  animation: nodePulse 3s ease-in-out infinite;
+}
+
+.cardPos {
+  position: absolute;
+}
+
+.cardA {
+  left: 22%;
+  top: 50%;
+  transform: translate(-100%, -50%);
+}
+
+.cardB {
+  left: 70%;
+  top: 24%;
+  transform: translate(0, -50%);
+}
+
+.cardC {
+  left: 66%;
+  top: 72%;
+  transform: translate(-50%, 0);
+}
+
+.cardFloat {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floatA {
+  animation-delay: 0s;
+}
+
+.floatB {
+  animation-delay: -2s;
+}
+
+.floatC {
+  animation-delay: -4s;
+}
+
 .inner {
   position: relative;
-  z-index: 1;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,84 +118,6 @@
   margin-top: 0.5rem;
 }
 
-.wire {
-  position: absolute;
-  left: 50%;
-  bottom: clamp(3rem, 8vh, 5rem);
-  transform: translateX(-50%);
-  z-index: 0;
-  width: min(92%, 640px);
-  display: flex;
-  align-items: center;
-  pointer-events: none;
-}
-
-.wireStation {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.wireDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-gray-500);
-  box-shadow: 0 0 0 3px var(--color-white);
-}
-
-.wireLabel {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 8px;
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-gray-500);
-  white-space: nowrap;
-}
-
-.wireLink {
-  position: relative;
-  flex: 1;
-  height: 2px;
-  background: var(--color-gray-300);
-}
-
-.wireFlow {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 6px;
-  height: 6px;
-  margin-top: -3px;
-  border-radius: 50%;
-  background: var(--color-gray-900);
-  animation: wireFlow 2.2s ease-in-out infinite;
-}
-
-@keyframes wireFlow {
-  0% {
-    left: 0;
-    opacity: 0;
-  }
-  12% {
-    opacity: 0.9;
-  }
-  88% {
-    opacity: 0.9;
-  }
-  100% {
-    left: calc(100% - 6px);
-    opacity: 0;
-  }
-}
-
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -136,5 +126,31 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(-6px);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes nodePulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .scene {
+    display: none;
   }
 }

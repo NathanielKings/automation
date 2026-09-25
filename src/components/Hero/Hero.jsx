@@ -1,13 +1,50 @@
-import { Fragment } from 'react'
 import { ArrowRight } from 'lucide-react'
 import Button from '../Button/Button.jsx'
+import WorkflowCard from './WorkflowCard.jsx'
 import styles from './Hero.module.css'
-
-const trail = ['Airtable', 'n8n', 'Gmail', 'Telegram']
 
 function Hero() {
   return (
     <section className={styles.hero} id="home">
+      <div className={styles.scene} aria-hidden="true">
+        <svg className={styles.lines} viewBox="0 0 100 100" preserveAspectRatio="none">
+          <polyline points="22,50 70,24 66,72" />
+        </svg>
+        <span className={styles.node} style={{ left: '22%', top: '50%' }} />
+        <span className={styles.node} style={{ left: '70%', top: '24%' }} />
+        <span className={styles.node} style={{ left: '66%', top: '72%' }} />
+
+        <div className={`${styles.cardPos} ${styles.cardA}`}>
+          <div className={`${styles.cardFloat} ${styles.floatA}`}>
+            <WorkflowCard
+              badge="When this happens"
+              title="New record in Airtable"
+              sub="Triggers the workflow"
+            />
+          </div>
+        </div>
+
+        <div className={`${styles.cardPos} ${styles.cardB}`}>
+          <div className={`${styles.cardFloat} ${styles.floatB}`}>
+            <WorkflowCard
+              badge="Then do this"
+              title="n8n routes the data"
+              sub="Automates the process"
+            />
+          </div>
+        </div>
+
+        <div className={`${styles.cardPos} ${styles.cardC}`}>
+          <div className={`${styles.cardFloat} ${styles.floatC}`}>
+            <WorkflowCard
+              badge="Then do this"
+              title="Update via Gmail & Telegram"
+              sub="Delivers the result"
+            />
+          </div>
+        </div>
+      </div>
+
       <div className={`container ${styles.inner}`}>
         <div className={styles.content}>
           <h1 className={styles.title}>Automation without the busywork.</h1>
@@ -27,22 +64,6 @@ function Hero() {
             </Button>
           </div>
         </div>
-      </div>
-
-      <div className={styles.wire} aria-hidden="true">
-        {trail.map((name, i) => (
-          <Fragment key={name}>
-            <span className={styles.wireStation}>
-              <span className={styles.wireDot} />
-              <span className={styles.wireLabel}>{name}</span>
-            </span>
-            {i < trail.length - 1 && (
-              <span className={styles.wireLink}>
-                <span className={styles.wireFlow} style={{ animationDelay: `${i * 0.5}s` }} />
-              </span>
-            )}
-          </Fragment>
-        ))}
       </div>
     </section>
   )
