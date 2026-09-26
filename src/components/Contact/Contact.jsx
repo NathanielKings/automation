@@ -38,6 +38,14 @@ function Contact() {
                 </a>
                 <a
                   className={styles.contactLink}
+                  href="https://www.linkedin.com/in/oyedokunadebayo/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  className={styles.contactLink}
                   href="https://github.com/NathanielKings"
                   target="_blank"
                   rel="noreferrer"
