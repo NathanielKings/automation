@@ -119,6 +119,11 @@
   transform: translateX(4px);
 }
 
+.featured:hover .link svg,
+.card:hover .link svg {
+  transform: translateX(4px);
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

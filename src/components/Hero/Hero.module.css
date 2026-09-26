@@ -19,6 +19,7 @@
   opacity: 0.46;
   -webkit-mask-image: radial-gradient(ellipse 120% 100% at 50% 45%, #000 35%, transparent 88%);
   mask-image: radial-gradient(ellipse 120% 100% at 50% 45%, #000 35%, transparent 88%);
+  animation: gridFade 0.9s ease 0.15s backwards;
 }
 
 .grid line {
@@ -42,7 +43,6 @@
   align-items: center;
   gap: 1.5rem;
   max-width: 54rem;
-  animation: fadeUp 0.6s ease both;
 }
 
 .title {
@@ -53,6 +53,7 @@
   line-height: 1;
   letter-spacing: -0.03em;
   text-wrap: balance;
+  animation: fadeUp 0.6s ease both;
 }
 
 .lead {
@@ -60,6 +61,7 @@
   line-height: 1.65;
   color: var(--color-gray-500);
   max-width: 34rem;
+  animation: fadeUp 0.6s ease 0.1s both;
 }
 
 .actions {
@@ -68,6 +70,7 @@
   justify-content: center;
   gap: 0.85rem;
   margin-top: 0.5rem;
+  animation: fadeUp 0.6s ease 0.2s both;
 }
 
 @media (max-width: 640px) {
@@ -104,5 +107,14 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes gridFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.46;
   }
 }

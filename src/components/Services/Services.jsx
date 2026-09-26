@@ -1,3 +1,4 @@
+import Reveal from '../Reveal/Reveal.jsx'
 import styles from './Services.module.css'
 
 const services = [
@@ -23,28 +24,32 @@ function Services() {
   return (
     <section className={styles.section} id="services">
       <div className="container">
-        <div className={styles.head}>
-          <h2 className={styles.heading}>I automate the work that slows you down.</h2>
-          <p className={styles.sub}>
-            From lead management to document processing, I build workflows that connect
-            your tools and remove repetitive manual work.
-          </p>
-        </div>
+        <Reveal>
+          <div className={styles.head}>
+            <h2 className={styles.heading}>I automate the work that slows you down.</h2>
+            <p className={styles.sub}>
+              From lead management to document processing, I build workflows that connect
+              your tools and remove repetitive manual work.
+            </p>
+          </div>
+        </Reveal>
 
-        <div className={styles.grid}>
-          {services.map((service) => (
-            <article className={styles.block} key={service.title}>
-              <h3 className={styles.blockTitle}>{service.title}</h3>
-              <ul className={styles.list}>
-                {service.items.map((item) => (
-                  <li className={styles.item} key={item}>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
+        <Reveal delay={120}>
+          <div className={styles.grid}>
+            {services.map((service) => (
+              <article className={styles.block} key={service.title}>
+                <h3 className={styles.blockTitle}>{service.title}</h3>
+                <ul className={styles.list}>
+                  {service.items.map((item) => (
+                    <li className={styles.item} key={item}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   )
