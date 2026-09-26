@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Workflow, Menu, X } from 'lucide-react'
 import Button from '../Button/Button.jsx'
+import ThemeToggle from '../ThemeToggle/ThemeToggle.jsx'
 import styles from './Navbar.module.css'
 
 const links = [
@@ -40,22 +41,24 @@ function Navbar() {
           ))}
         </nav>
 
-        <div className={styles.cta}>
-          <Button href="#contact" variant="primary" size="sm">
-            Let&rsquo;s Talk
-          </Button>
+        <div className={styles.actions}>
+          <ThemeToggle />
+          <div className={styles.cta}>
+            <Button href="#contact" variant="primary" size="sm">
+              Let&rsquo;s Talk
+            </Button>
+          </div>
+          <button
+            type="button"
+            className={styles.toggle}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
-
-        <button
-          type="button"
-          className={styles.toggle}
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
       </div>
 
       <div className={`${styles.menu} ${open ? styles.menuOpen : ''}`} id="mobile-menu">

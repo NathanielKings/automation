@@ -1,3 +1,8 @@
+import crmHero from '../assets/projects/crm/HS5n2gnXQAAJiwl.jfif'
+import crmWorkflow from '../assets/projects/crm/HS5n2glW8AEZycc.jfif'
+import crmShotA from '../assets/projects/crm/HS5n2gkWMAAp1Ga.jfif'
+import crmShotB from '../assets/projects/crm/HS5n2gkWQAA9idW.jfif'
+
 const projects = [
   {
     id: 1,
@@ -8,6 +13,9 @@ const projects = [
       'A CRM workflow that automates lead assignment, follow-ups, notifications, activity logging, and daily sales reporting.',
     tools: ['Airtable', 'n8n', 'Gmail', 'Telegram'],
     demoUrl: '',
+    heroImage: crmHero,
+    workflowImage: crmWorkflow,
+    screenshots: [crmShotA, crmShotB],
   },
   {
     id: 2,
@@ -17,7 +25,10 @@ const projects = [
     description:
       'An automated document workflow that takes participant information from an Excel file, generates personalized certificates as PDFs, and sends them by email.',
     tools: ['Excel', 'Google Sheets', 'Google Docs', 'Zapier', 'n8n'],
-    demoUrl: '',
+    demoUrl: 'https://youtu.be/B-SGtqLfoDE',
+    heroImage: '',
+    workflowImage: '',
+    screenshots: [],
   },
   {
     id: 3,
@@ -27,7 +38,10 @@ const projects = [
     description:
       'A membership workflow that automates new-member onboarding, payment status updates, confirmation messages, and renewal reminders.',
     tools: ['Airtable', 'n8n', 'Gmail', 'Telegram'],
-    demoUrl: '',
+    demoUrl: 'https://youtu.be/HRvDu8rHakM?si=_2o4RmJUBBOHehLj',
+    heroImage: '',
+    workflowImage: '',
+    screenshots: [],
   },
   {
     id: 4,
@@ -37,7 +51,10 @@ const projects = [
     description:
       'An automated document workflow that generates documents, sends them for electronic signature, and manages the signing process.',
     tools: ['PDF.co', 'DocuSign'],
-    demoUrl: '',
+    demoUrl: 'https://youtu.be/jeF75XRga7o',
+    heroImage: '',
+    workflowImage: '',
+    screenshots: [],
   },
 ]
 

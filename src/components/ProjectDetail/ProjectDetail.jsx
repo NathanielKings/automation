@@ -1,7 +1,7 @@
-import { Fragment } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import projects from '../../data/projects.js'
+import { getYouTubeEmbedUrl } from '../../utils/youtube.js'
 import styles from './ProjectDetail.module.css'
 
 function ProjectDetail() {
@@ -25,6 +25,7 @@ function ProjectDetail() {
   }
 
   const whatItDoes = `${project.title} ties together ${project.tools.join(', ')} to run the whole process automatically, removing the manual steps in between.`
+  const embedUrl = getYouTubeEmbedUrl(project.demoUrl)
 
   return (
     <section className={styles.section}>
@@ -42,6 +43,9 @@ function ProjectDetail() {
             <span className={styles.toolsLabel}>Tools</span>
             {project.tools.join(' · ')}
           </p>
+          {project.heroImage && (
+            <img className={styles.heroImage} src={project.heroImage} alt={project.title} />
+          )}
         </header>
 
         <div className={styles.body}>
@@ -50,38 +54,46 @@ function ProjectDetail() {
             <p className={styles.blockText}>{whatItDoes}</p>
           </section>
 
-          <section className={styles.block}>
-            <h2 className={styles.blockHeading}>Workflow</h2>
-            <div className={styles.flow}>
-              {project.tools.map((tool, i) => (
-                <Fragment key={tool}>
-                  <span className={styles.flowStep}>{tool}</span>
-                  {i < project.tools.length - 1 && (
-                    <ArrowRight className={styles.flowArrow} size={16} aria-hidden="true" />
-                  )}
-                </Fragment>
-              ))}
-            </div>
-          </section>
+          {project.workflowImage && (
+            <section className={styles.block}>
+              <h2 className={styles.blockHeading}>Workflow</h2>
+              <img
+                className={styles.workflowImage}
+                src={project.workflowImage}
+                alt={`${project.title} workflow`}
+              />
+            </section>
+          )}
 
-          <section className={styles.block}>
-            <h2 className={styles.blockHeading}>Demo</h2>
-            <div className={styles.demo}>
-              {project.demoUrl ? (
-                <a
-                  className={styles.demoLink}
-                  href={project.demoUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Watch Demo
-                  <ArrowRight size={15} aria-hidden="true" />
-                </a>
-              ) : (
-                <p className={styles.demoPlaceholder}>Demo coming soon.</p>
-              )}
-            </div>
-          </section>
+          {project.screenshots && project.screenshots.length > 0 && (
+            <section className={styles.block}>
+              <h2 className={styles.blockHeading}>Screenshots</h2>
+              <div className={styles.screenshots}>
+                {project.screenshots.map((src, i) => (
+                  <img
+                    className={styles.screenshot}
+                    key={`${src}-${i}`}
+                    src={src}
+                    alt={`${project.title} screenshot ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
+
+          {embedUrl && (
+            <section className={styles.block}>
+              <h2 className={styles.blockHeading}>Watch the demo</h2>
+              <iframe
+                className={styles.videoFrame}
+                src={embedUrl}
+                title={`${project.title} demo`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </section>
+          )}
         </div>
       </div>
     </section>
