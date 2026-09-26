@@ -9,7 +9,7 @@ import styles from './ProjectDetail.module.css'
 
 function BackLink() {
   return (
-    <Link className={styles.back} to="/projects">
+    <Link className={styles.back} to="/#work">
       <ArrowLeft size={16} aria-hidden="true" />
       Back to Projects
     </Link>
