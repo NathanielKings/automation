@@ -4,24 +4,86 @@ import styles from './Hero.module.css'
 
 const W = 1200
 const H = 800
-const HORIZON = 320
-const VANISH_X = 600
+const VPX = 600
+const VPY = 400
+const WALL = { l: 460, r: 740, t: 300, b: 500 }
 
-const gridLines = (() => {
-  const lines = []
+const roomSegments = (() => {
+  const segs = []
 
-  for (let i = 1; i <= 18; i += 1) {
-    const t = i / 18
-    const y = HORIZON + (H - HORIZON) * t * t
-    lines.push({ x1: 0, y1: y, x2: W, y2: y })
+  // Room corner edges (back wall corners -> outer frame corners)
+  segs.push([WALL.l, WALL.t, 0, 0])
+  segs.push([WALL.r, WALL.t, W, 0])
+  segs.push([WALL.l, WALL.b, 0, H])
+  segs.push([WALL.r, WALL.b, W, H])
+
+  // Back wall grid
+  for (let i = 1; i < 8; i += 1) {
+    const x = WALL.l + ((WALL.r - WALL.l) * i) / 8
+    segs.push([x, WALL.t, x, WALL.b])
+  }
+  for (let i = 1; i < 6; i += 1) {
+    const y = WALL.t + ((WALL.b - WALL.t) * i) / 6
+    segs.push([WALL.l, y, WALL.r, y])
   }
 
-  for (let i = 0; i <= 30; i += 1) {
-    const t = i / 30 - 0.5
-    lines.push({ x1: VANISH_X, y1: HORIZON, x2: VANISH_X + t * 1800, y2: H })
+  // Floor — receding horizontal lines + radial lines
+  for (let i = 1; i <= 10; i += 1) {
+    const t = i / 10
+    const y = WALL.b + (H - WALL.b) * t * t
+    const xl = WALL.l - WALL.l * ((y - WALL.b) / (H - WALL.b))
+    const xr = WALL.r + (W - WALL.r) * ((y - WALL.b) / (H - WALL.b))
+    segs.push([xl, y, xr, y])
+  }
+  for (let i = 0; i <= 20; i += 1) {
+    const bx = (W * i) / 20
+    const xAtWall = VPX + (bx - VPX) * ((WALL.b - VPY) / (H - VPY))
+    segs.push([xAtWall, WALL.b, bx, H])
   }
 
-  return lines
+  // Ceiling — receding horizontal lines + radial lines
+  for (let i = 1; i <= 8; i += 1) {
+    const t = i / 8
+    const y = WALL.t - WALL.t * t * t
+    const xl = WALL.l - WALL.l * ((WALL.t - y) / WALL.t)
+    const xr = WALL.r + (W - WALL.r) * ((WALL.t - y) / WALL.t)
+    segs.push([xl, y, xr, y])
+  }
+  for (let i = 0; i <= 20; i += 1) {
+    const tx = (W * i) / 20
+    const xAtWall = VPX + (tx - VPX) * ((VPY - WALL.t) / VPY)
+    segs.push([xAtWall, WALL.t, tx, 0])
+  }
+
+  // Left wall
+  for (let i = 1; i < 7; i += 1) {
+    const x = (WALL.l * i) / 7
+    const yTop = (WALL.t / WALL.l) * x
+    const yBottom = WALL.b + (H - WALL.b) * ((WALL.l - x) / WALL.l)
+    segs.push([x, yTop, x, yBottom])
+  }
+  for (let i = 1; i < 6; i += 1) {
+    const t = i / 6
+    const y1 = WALL.t + (WALL.b - WALL.t) * t
+    const y2 = H * t
+    segs.push([WALL.l, y1, 0, y2])
+  }
+
+  // Right wall
+  for (let i = 1; i < 7; i += 1) {
+    const x = WALL.r + ((W - WALL.r) * i) / 7
+    const yTop = WALL.t * ((W - x) / (W - WALL.r))
+    const yBottom = WALL.b + (H - WALL.b) * ((x - WALL.r) / (W - WALL.r))
+    segs.push([x, yTop, x, yBottom])
+  }
+  for (let i = 1; i < 6; i += 1) {
+    const t = i / 6
+    const y1 = WALL.t + (WALL.b - WALL.t) * t
+    const y2 = H * t
+    segs.push([WALL.r, y1, W, y2])
+  }
+
+  return segs
 })()
 
 function Hero() {
@@ -33,8 +95,8 @@ function Hero() {
         preserveAspectRatio="xMidYMid slice"
         aria-hidden="true"
       >
-        {gridLines.map((line, i) => (
-          <line key={i} x1={line.x1} y1={line.y1} x2={line.x2} y2={line.y2} />
+        {roomSegments.map((seg, i) => (
+          <line key={i} x1={seg[0]} y1={seg[1]} x2={seg[2]} y2={seg[3]} />
         ))}
       </svg>
 
