@@ -25,7 +25,10 @@ function Contact() {
             </Reveal>
 
             <Reveal delay={180}>
-              <a className={styles.cta} href="mailto:oyedokunadebayon@gmail.com">
+              <a
+                className={styles.cta}
+                href="mailto:oyedokunadebayon@gmail.com?subject=Automation%20Project%20Inquiry"
+              >
                 Start a Conversation
                 <ArrowRight size={15} aria-hidden="true" />
               </a>
