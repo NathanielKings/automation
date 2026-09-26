@@ -87,6 +87,14 @@
   transform: scaleX(1);
 }
 
+.link.active {
+  color: var(--color-black);
+}
+
+.link.active::after {
+  transform: scaleX(1);
+}
+
 .actions {
   grid-column: 3;
   justify-self: end;
@@ -156,6 +164,10 @@
   }
 
   .menuLink:hover {
+    background: var(--color-gray-100);
+  }
+
+  .menuLink.active {
     background: var(--color-gray-100);
   }
 

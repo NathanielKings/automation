@@ -98,7 +98,6 @@ function ProjectDetail() {
                   className={styles.videoFrame}
                   src={embedUrl}
                   title={`${project.title} demo`}
-                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 />

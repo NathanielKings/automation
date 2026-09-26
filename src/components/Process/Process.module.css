@@ -110,7 +110,7 @@
 
   .node {
     position: absolute;
-    top: 4px;
+    top: 0.75rem;
     left: 4px;
     transform: translateX(-50%);
   }

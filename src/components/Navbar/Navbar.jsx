@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Workflow, Menu, X } from 'lucide-react'
 import Button from '../Button/Button.jsx'
 import ThemeToggle from '../ThemeToggle/ThemeToggle.jsx'
@@ -18,6 +18,16 @@ const links = [
 function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { pathname, hash } = useLocation()
+
+  const activeTo = (() => {
+    if (pathname.startsWith('/projects')) return '/#work'
+    if (pathname === '/') {
+      if (hash) return `/#${hash.slice(1)}`
+      return '/'
+    }
+    return ''
+  })()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -38,7 +48,11 @@ function Navbar() {
 
         <nav className={styles.nav} aria-label="Primary">
           {links.map((link) => (
-            <Link key={link.to} to={link.to} className={styles.link}>
+            <Link
+              key={link.to}
+              to={link.to}
+              className={`${styles.link} ${link.to === activeTo ? styles.active : ''}`}
+            >
               {link.label}
             </Link>
           ))}
@@ -69,7 +83,7 @@ function Navbar() {
           <Link
             key={link.to}
             to={link.to}
-            className={styles.menuLink}
+            className={`${styles.menuLink} ${link.to === activeTo ? styles.active : ''}`}
             onClick={() => setOpen(false)}
           >
             {link.label}

@@ -132,7 +132,7 @@
 .videoFrame {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border: 1px solid var(--border);
+  border: 0;
   background: var(--color-gray-100);
 }
 
