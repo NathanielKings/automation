@@ -18,107 +18,61 @@ function ProcessFlow({ steps }) {
   )
 }
 
-function ArchitectureDiagram() {
+function ArchitectureDiagram({ architecture }) {
+  const { viewBox, labels = [], nodes = [], edges = [] } = architecture
+
   return (
     <div className={styles.archWrap}>
-      <svg
-        className={styles.arch}
-        viewBox="0 0 720 860"
-        role="img"
-        aria-label="CRM Sales Automation workflow architecture"
-      >
-      <defs>
-        <marker
-          id="archArrow"
-          viewBox="0 0 10 10"
-          refX="8"
-          refY="5"
-          markerWidth="6"
-          markerHeight="6"
-          orient="auto"
-        >
-          <path className={styles.archArrowHead} d="M 0 0 L 10 5 L 0 10 Z" />
-        </marker>
-      </defs>
+      <svg className={styles.arch} viewBox={viewBox} role="img" aria-label="Workflow architecture">
+        <defs>
+          <marker
+            id="archArrow"
+            viewBox="0 0 10 10"
+            refX="8"
+            refY="5"
+            markerWidth="6"
+            markerHeight="6"
+            orient="auto"
+          >
+            <path className={styles.archArrowHead} d="M 0 0 L 10 5 L 0 10 Z" />
+          </marker>
+        </defs>
 
-      {/* lines */}
-      <line className={styles.archLine} x1="360" y1="48" x2="360" y2="60" markerEnd="url(#archArrow)" />
-      <line className={styles.archLine} x1="360" y1="112" x2="360" y2="152" markerEnd="url(#archArrow)" />
-      <line className={styles.archLine} x1="360" y1="196" x2="360" y2="245" markerEnd="url(#archArrow)" />
-      <line className={styles.archLine} x1="110" y1="245" x2="610" y2="245" />
-      <line className={styles.archLine} x1="110" y1="245" x2="110" y2="290" markerEnd="url(#archArrow)" />
-      <line className={styles.archLine} x1="360" y1="245" x2="360" y2="290" markerEnd="url(#archArrow)" />
-      <line className={styles.archLine} x1="610" y1="245" x2="610" y2="290" markerEnd="url(#archArrow)" />
-      <line className={styles.archLine} x1="360" y1="334" x2="360" y2="410" markerEnd="url(#archArrow)" />
-      <line className={styles.archLine} x1="110" y1="334" x2="110" y2="480" />
-      <line className={styles.archLine} x1="610" y1="334" x2="610" y2="480" />
-      <line className={styles.archLine} x1="360" y1="454" x2="360" y2="480" />
-      <line className={styles.archLine} x1="110" y1="480" x2="610" y2="480" />
-      <line className={styles.archLine} x1="360" y1="480" x2="360" y2="540" markerEnd="url(#archArrow)" />
-      <line className={styles.archLine} x1="360" y1="584" x2="360" y2="640" markerEnd="url(#archArrow)" />
-      <line className={styles.archLine} x1="360" y1="684" x2="360" y2="740" markerEnd="url(#archArrow)" />
+        {edges.map((edge, i) => (
+          <line
+            key={i}
+            className={styles.archLine}
+            x1={edge.x1}
+            y1={edge.y1}
+            x2={edge.x2}
+            y2={edge.y2}
+            markerEnd={edge.arrow ? 'url(#archArrow)' : undefined}
+          />
+        ))}
 
-      {/* NEW LEAD label */}
-      <text className={styles.archLabel} x="360" y="36" textAnchor="middle">
-        New Lead
-      </text>
+        {labels.map((label, i) => (
+          <text key={i} className={styles.archLabel} x={label.x} y={label.y} textAnchor="middle">
+            {label.text}
+          </text>
+        ))}
 
-      {/* Airtable */}
-      <rect className={styles.archBox} x="285" y="60" width="150" height="52" />
-      <text className={styles.archTitle} x="360" y="82" textAnchor="middle">
-        Airtable
-      </text>
-      <text className={styles.archSub} x="360" y="100" textAnchor="middle">
-        Leads
-      </text>
-
-      {/* n8n */}
-      <rect className={styles.archBox} x="310" y="152" width="100" height="44" />
-      <text className={styles.archTitle} x="360" y="180" textAnchor="middle">
-        n8n
-      </text>
-
-      {/* Priority */}
-      <rect className={styles.archBox} x="40" y="290" width="140" height="44" />
-      <text className={styles.archTitle} x="110" y="318" textAnchor="middle">
-        Priority
-      </text>
-
-      {/* Sales Owner */}
-      <rect className={styles.archBox} x="285" y="290" width="150" height="44" />
-      <text className={styles.archTitle} x="360" y="318" textAnchor="middle">
-        Sales Owner
-      </text>
-
-      {/* Gmail */}
-      <rect className={styles.archBox} x="550" y="290" width="120" height="44" />
-      <text className={styles.archTitle} x="610" y="318" textAnchor="middle">
-        Gmail
-      </text>
-
-      {/* Telegram (internal) */}
-      <rect className={styles.archBox} x="295" y="410" width="130" height="44" />
-      <text className={styles.archTitle} x="360" y="438" textAnchor="middle">
-        Telegram
-      </text>
-
-      {/* Activity Logging */}
-      <rect className={styles.archBox} x="275" y="540" width="170" height="44" />
-      <text className={styles.archTitle} x="360" y="568" textAnchor="middle">
-        Activity Logging
-      </text>
-
-      {/* Follow-up Monitoring */}
-      <rect className={styles.archBox} x="260" y="640" width="200" height="44" />
-      <text className={styles.archTitle} x="360" y="668" textAnchor="middle">
-        Follow-up Monitoring
-      </text>
-
-      {/* Telegram (follow-up) */}
-      <rect className={styles.archBox} x="295" y="740" width="130" height="44" />
-      <text className={styles.archTitle} x="360" y="768" textAnchor="middle">
-        Telegram
-      </text>
+        {nodes.map((node, i) => {
+          const cx = node.x + node.w / 2
+          const titleY = node.sub ? node.y + node.h / 2 - 2 : node.y + node.h / 2 + 5
+          return (
+            <Fragment key={i}>
+              <rect className={styles.archBox} x={node.x} y={node.y} width={node.w} height={node.h} />
+              <text className={styles.archTitle} x={cx} y={titleY} textAnchor="middle">
+                {node.title}
+              </text>
+              {node.sub && (
+                <text className={styles.archSub} x={cx} y={titleY + 18} textAnchor="middle">
+                  {node.sub}
+                </text>
+              )}
+            </Fragment>
+          )
+        })}
       </svg>
     </div>
   )
@@ -191,7 +145,7 @@ function CaseStudy({ project, data }) {
       <Reveal>
         <section className={styles.block}>
           <h2 className={styles.blockHeading}>Workflow Architecture</h2>
-          <ArchitectureDiagram />
+          <ArchitectureDiagram architecture={data.architecture} />
           {project.workflowImage && (
             <img
               className={styles.workflowImage}
