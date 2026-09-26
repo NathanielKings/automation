@@ -7,6 +7,7 @@ import Process from './components/Process/Process.jsx'
 import Stack from './components/Stack/Stack.jsx'
 import About from './components/About/About.jsx'
 import Contact from './components/Contact/Contact.jsx'
+import Footer from './components/Footer/Footer.jsx'
 import ProjectDetail from './components/ProjectDetail/ProjectDetail.jsx'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop.jsx'
 
@@ -20,6 +21,7 @@ function Home() {
       <Stack />
       <About />
       <Contact />
+      <Footer />
     </>
   )
 }
