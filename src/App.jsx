@@ -26,6 +26,24 @@ function Home() {
   )
 }
 
+function ProjectsPage() {
+  return (
+    <>
+      <SelectedWork />
+      <Footer />
+    </>
+  )
+}
+
+function ProjectDetailPage() {
+  return (
+    <>
+      <ProjectDetail />
+      <Footer />
+    </>
+  )
+}
+
 function App() {
   return (
     <BrowserRouter>
@@ -34,8 +52,8 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<SelectedWork />} />
-          <Route path="/projects/:slug" element={<ProjectDetail />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/projects/:slug" element={<ProjectDetailPage />} />
         </Routes>
       </main>
     </BrowserRouter>

@@ -1,12 +1,15 @@
+import { Link } from 'react-router-dom'
 import Reveal from '../Reveal/Reveal.jsx'
 import styles from './Footer.module.css'
 
 const nav = [
-  { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
-  { label: 'Projects', href: '#work' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', to: '/' },
+  { label: 'Services', to: '/#services' },
+  { label: 'Work', to: '/#work' },
+  { label: 'Process', to: '/#process' },
+  { label: 'Stack', to: '/#stack' },
+  { label: 'About', to: '/#about' },
+  { label: 'Contact', to: '/#contact' },
 ]
 
 const social = [
@@ -31,9 +34,9 @@ function Footer() {
             <div className={styles.links}>
               <nav className={styles.nav} aria-label="Footer">
                 {nav.map((link) => (
-                  <a key={link.href} className={styles.navLink} href={link.href}>
+                  <Link key={link.to} className={styles.navLink} to={link.to}>
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </nav>
 

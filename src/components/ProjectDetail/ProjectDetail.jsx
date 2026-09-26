@@ -31,7 +31,7 @@ function ProjectDetail() {
   return (
     <section className={styles.section}>
       <div className="container">
-        <Link className={styles.back} to="/">
+        <Link className={styles.back} to="/projects">
           <ArrowLeft size={16} aria-hidden="true" />
           Back to Projects
         </Link>

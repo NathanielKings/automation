@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Workflow, Menu, X } from 'lucide-react'
 import Button from '../Button/Button.jsx'
 import ThemeToggle from '../ThemeToggle/ThemeToggle.jsx'
 import styles from './Navbar.module.css'
 
 const links = [
-  { label: 'Work', href: '#work' },
-  { label: 'Services', href: '#services' },
-  { label: 'Process', href: '#process' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', to: '/' },
+  { label: 'Services', to: '/#services' },
+  { label: 'Work', to: '/#work' },
+  { label: 'Process', to: '/#process' },
+  { label: 'Stack', to: '/#stack' },
+  { label: 'About', to: '/#about' },
+  { label: 'Contact', to: '/#contact' },
 ]
 
 function Navbar() {
@@ -26,25 +29,25 @@ function Navbar() {
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
-        <a href="#home" className={styles.brand} aria-label="Nathaniel — home">
+        <Link to="/" className={styles.brand} aria-label="Nathaniel Kings — home">
           <span className={styles.mark}>
             <Workflow size={17} aria-hidden="true" />
           </span>
-          <span className={styles.name}>Nathaniel</span>
-        </a>
+          <span className={styles.name}>Nathaniel Kings</span>
+        </Link>
 
         <nav className={styles.nav} aria-label="Primary">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className={styles.link}>
+            <Link key={link.to} to={link.to} className={styles.link}>
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className={styles.actions}>
           <ThemeToggle />
           <div className={styles.cta}>
-            <Button href="#contact" variant="primary" size="sm">
+            <Button to="/#contact" variant="primary" size="sm">
               Let&rsquo;s Talk
             </Button>
           </div>
@@ -63,22 +66,18 @@ function Navbar() {
 
       <div className={`${styles.menu} ${open ? styles.menuOpen : ''}`} id="mobile-menu">
         {links.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
+          <Link
+            key={link.to}
+            to={link.to}
             className={styles.menuLink}
             onClick={() => setOpen(false)}
           >
             {link.label}
-          </a>
+          </Link>
         ))}
-        <a
-          href="#contact"
-          className={styles.menuCta}
-          onClick={() => setOpen(false)}
-        >
+        <Link to="/#contact" className={styles.menuCta} onClick={() => setOpen(false)}>
           Let&rsquo;s Talk
-        </a>
+        </Link>
       </div>
     </header>
   )
