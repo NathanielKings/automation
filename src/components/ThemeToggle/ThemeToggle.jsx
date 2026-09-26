@@ -4,8 +4,8 @@ import styles from './ThemeToggle.module.css'
 
 function ThemeToggle() {
   const [theme, setTheme] = useState(() => {
-    if (typeof window === 'undefined') return 'light'
-    return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+    if (typeof window === 'undefined') return 'dark'
+    return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark'
   })
 
   useEffect(() => {

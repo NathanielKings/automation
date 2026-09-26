@@ -1,7 +1,7 @@
-import crmHero from '../assets/projects/crm/HS5n2gnXQAAJiwl.jfif'
-import crmWorkflow from '../assets/projects/crm/HS5n2glW8AEZycc.jfif'
-import crmShotA from '../assets/projects/crm/HS5n2gkWMAAp1Ga.jfif'
-import crmShotB from '../assets/projects/crm/HS5n2gkWQAA9idW.jfif'
+import crmHero from '../assets/projects/crm/base table.jfif'
+import crmWorkflow from '../assets/projects/crm/workflow.jfif'
+import crmShotA from '../assets/projects/crm/email template.jfif'
+import crmShotB from '../assets/projects/crm/reporting.jfif'
 
 const projects = [
   {
