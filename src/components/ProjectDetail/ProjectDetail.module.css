@@ -144,10 +144,6 @@
   padding-block: 4rem;
 }
 
-.backBottom {
-  margin-top: clamp(2rem, 4vw, 3rem);
-}
-
 .notFoundTitle {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;

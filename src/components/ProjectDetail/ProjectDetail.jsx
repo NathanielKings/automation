@@ -83,11 +83,9 @@ function ProjectDetail() {
     return (
       <section className={styles.section}>
         <div className="container">
+          <BackLink />
           <CaseStudy project={project} data={caseStudy} />
           <Media project={project} />
-          <div className={styles.backBottom}>
-            <BackLink />
-          </div>
         </div>
       </section>
     )
