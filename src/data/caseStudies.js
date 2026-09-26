@@ -197,6 +197,114 @@ const caseStudies = {
       'Makes bulk certificate distribution more manageable',
     ],
   },
+
+  'gym-membership-automation': {
+    subtitle: 'Automating membership communication and payment-status follow-up for a gym.',
+    processSteps: [
+      'Membership Sign-up',
+      'Welcome Email',
+      'Payment Status',
+      'Confirmation',
+      'Expiry Check',
+      'Reminder',
+    ],
+    toolsLabel: 'Airtable · n8n · Gmail · Telegram',
+    problem: [
+      'Managing gym memberships manually can create repetitive administrative work.',
+      'When a new member signs up, staff may need to send a welcome message, monitor payment status, confirm successful payments, and remember to follow up when a membership is approaching its expiry date.',
+      'As the number of members increases, keeping track of these events manually becomes more difficult.',
+    ],
+    solution: [
+      'I built an automated membership workflow using Airtable and n8n to manage key communication and status changes throughout the membership lifecycle.',
+      'The workflow responds to membership events, sends the appropriate communication, tracks payment status, confirms successful payments, and monitors upcoming membership expiry dates so reminders can be sent automatically.',
+    ],
+    howItWorks: [
+      {
+        number: '01',
+        title: 'Member Sign-up',
+        body: "A new member's information is captured in the membership database.",
+      },
+      {
+        number: '02',
+        title: 'Welcome Communication',
+        body: 'The workflow detects the new membership and sends a welcome email automatically.',
+      },
+      {
+        number: '03',
+        title: 'Payment Status',
+        body: "The member's payment status is tracked in Airtable.",
+        items: ['Pending', 'Paid', 'Expired'],
+      },
+      {
+        number: '04',
+        title: 'Payment Confirmation',
+        body: 'When the payment status changes to Paid, the workflow sends the appropriate confirmation communication.',
+      },
+      {
+        number: '05',
+        title: 'Membership Monitoring',
+        body: 'The workflow monitors the membership status and expiry information.',
+      },
+      {
+        number: '06',
+        title: 'Expiry Check',
+        body: 'When a membership approaches its expiry period, the workflow identifies the member as requiring attention.',
+      },
+      {
+        number: '07',
+        title: 'Reminder',
+        body: 'A reminder is automatically sent so the member can be contacted before the membership expires.',
+      },
+    ],
+    architecture: {
+      viewBox: '0 0 720 740',
+      labels: [{ x: 360, y: 36, text: 'Member Sign-up' }],
+      nodes: [
+        { x: 285, y: 60, w: 150, h: 48, title: 'Airtable' },
+        { x: 310, y: 150, w: 100, h: 44, title: 'n8n' },
+        { x: 80, y: 270, w: 150, h: 44, title: 'Welcome Email' },
+        { x: 480, y: 270, w: 160, h: 44, title: 'Payment Status' },
+        { x: 395, y: 390, w: 90, h: 44, title: 'Paid' },
+        { x: 600, y: 390, w: 110, h: 44, title: 'Pending' },
+        { x: 355, y: 480, w: 170, h: 44, title: 'Confirmation' },
+        { x: 355, y: 570, w: 170, h: 44, title: 'Expiry Check' },
+        { x: 355, y: 660, w: 170, h: 44, title: 'Reminder' },
+      ],
+      edges: [
+        { x1: 360, y1: 48, x2: 360, y2: 60, arrow: true },
+        { x1: 360, y1: 108, x2: 360, y2: 150, arrow: true },
+        { x1: 360, y1: 194, x2: 360, y2: 235, arrow: true },
+        { x1: 155, y1: 235, x2: 560, y2: 235 },
+        { x1: 155, y1: 235, x2: 155, y2: 270, arrow: true },
+        { x1: 560, y1: 235, x2: 560, y2: 270, arrow: true },
+        { x1: 560, y1: 314, x2: 560, y2: 350, arrow: true },
+        { x1: 440, y1: 350, x2: 655, y2: 350 },
+        { x1: 440, y1: 350, x2: 440, y2: 390, arrow: true },
+        { x1: 655, y1: 350, x2: 655, y2: 390, arrow: true },
+        { x1: 440, y1: 434, x2: 440, y2: 480, arrow: true },
+        { x1: 440, y1: 524, x2: 440, y2: 570, arrow: true },
+        { x1: 440, y1: 614, x2: 440, y2: 660, arrow: true },
+      ],
+    },
+    tools: [
+      { name: 'Airtable', description: 'Membership database and status tracking.' },
+      { name: 'n8n', description: 'Workflow orchestration and automation logic.' },
+      {
+        name: 'Gmail',
+        description: 'Member communication including welcome, confirmation and reminder emails.',
+      },
+      { name: 'Telegram', description: 'Internal notifications for membership events.' },
+    ],
+    improvements: [
+      'Automates new-member communication',
+      'Keeps payment status organized',
+      'Reduces repetitive administrative work',
+      'Provides consistent payment confirmation',
+      'Monitors approaching membership expiry',
+      'Reduces the chance of missed renewal reminders',
+      'Creates a more structured membership process',
+    ],
+  },
 }
 
 export default caseStudies
