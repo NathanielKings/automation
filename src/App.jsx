@@ -6,6 +6,7 @@ import SelectedWork from './components/SelectedWork/SelectedWork.jsx'
 import Process from './components/Process/Process.jsx'
 import Stack from './components/Stack/Stack.jsx'
 import About from './components/About/About.jsx'
+import Contact from './components/Contact/Contact.jsx'
 import ProjectDetail from './components/ProjectDetail/ProjectDetail.jsx'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop.jsx'
 
@@ -18,6 +19,7 @@ function Home() {
       <Process />
       <Stack />
       <About />
+      <Contact />
     </>
   )
 }
