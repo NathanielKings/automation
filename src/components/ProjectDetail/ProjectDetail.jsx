@@ -1,9 +1,61 @@
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import projects from '../../data/projects.js'
+import caseStudies from '../../data/caseStudies.js'
 import { getYouTubeEmbedUrl } from '../../utils/youtube.js'
 import Reveal from '../Reveal/Reveal.jsx'
+import CaseStudy from '../CaseStudy/CaseStudy.jsx'
 import styles from './ProjectDetail.module.css'
+
+function BackLink() {
+  return (
+    <Link className={styles.back} to="/projects">
+      <ArrowLeft size={16} aria-hidden="true" />
+      Back to Projects
+    </Link>
+  )
+}
+
+function Media({ project }) {
+  const embedUrl = getYouTubeEmbedUrl(project.demoUrl)
+
+  return (
+    <>
+      {project.screenshots && project.screenshots.length > 0 && (
+        <Reveal>
+          <section className={styles.block}>
+            <h2 className={styles.blockHeading}>Screenshots</h2>
+            <div className={styles.screenshots}>
+              {project.screenshots.map((src, i) => (
+                <img
+                  className={styles.screenshot}
+                  key={`${src}-${i}`}
+                  src={src}
+                  alt={`${project.title} screenshot ${i + 1}`}
+                />
+              ))}
+            </div>
+          </section>
+        </Reveal>
+      )}
+
+      {embedUrl && (
+        <Reveal>
+          <section className={styles.block}>
+            <h2 className={styles.blockHeading}>Watch the demo</h2>
+            <iframe
+              className={styles.videoFrame}
+              src={embedUrl}
+              title={`${project.title} demo`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </section>
+        </Reveal>
+      )}
+    </>
+  )
+}
 
 function ProjectDetail() {
   const { slug } = useParams()
@@ -25,16 +77,28 @@ function ProjectDetail() {
     )
   }
 
+  const caseStudy = caseStudies[slug]
+
+  if (caseStudy) {
+    return (
+      <section className={styles.section}>
+        <div className="container">
+          <CaseStudy project={project} data={caseStudy} />
+          <Media project={project} />
+          <div className={styles.backBottom}>
+            <BackLink />
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   const whatItDoes = `${project.title} ties together ${project.tools.join(', ')} to run the whole process automatically, removing the manual steps in between.`
-  const embedUrl = getYouTubeEmbedUrl(project.demoUrl)
 
   return (
     <section className={styles.section}>
       <div className="container">
-        <Link className={styles.back} to="/projects">
-          <ArrowLeft size={16} aria-hidden="true" />
-          Back to Projects
-        </Link>
+        <BackLink />
 
         <Reveal>
           <header className={styles.header}>
@@ -72,38 +136,7 @@ function ProjectDetail() {
             </Reveal>
           )}
 
-          {project.screenshots && project.screenshots.length > 0 && (
-            <Reveal>
-              <section className={styles.block}>
-                <h2 className={styles.blockHeading}>Screenshots</h2>
-                <div className={styles.screenshots}>
-                  {project.screenshots.map((src, i) => (
-                    <img
-                      className={styles.screenshot}
-                      key={`${src}-${i}`}
-                      src={src}
-                      alt={`${project.title} screenshot ${i + 1}`}
-                    />
-                  ))}
-                </div>
-              </section>
-            </Reveal>
-          )}
-
-          {embedUrl && (
-            <Reveal>
-              <section className={styles.block}>
-                <h2 className={styles.blockHeading}>Watch the demo</h2>
-                <iframe
-                  className={styles.videoFrame}
-                  src={embedUrl}
-                  title={`${project.title} demo`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
-              </section>
-            </Reveal>
-          )}
+          <Media project={project} />
         </div>
       </div>
     </section>
