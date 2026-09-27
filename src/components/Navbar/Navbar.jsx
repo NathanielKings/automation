@@ -39,11 +39,11 @@ function Navbar() {
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
-        <Link to="/" className={styles.brand} aria-label="Nathaniel Kings — home">
+        <Link to="/" className={styles.brand} aria-label="Nathaniel — home">
           <span className={styles.mark}>
             <Workflow size={17} aria-hidden="true" />
           </span>
-          <span className={styles.name}>Nathaniel Kings</span>
+          <span className={styles.name}>Nathaniel</span>
         </Link>
 
         <nav className={styles.nav} aria-label="Primary">
