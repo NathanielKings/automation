@@ -3,8 +3,7 @@ import Navbar from './components/Navbar/Navbar.jsx'
 import Hero from './components/Hero/Hero.jsx'
 import Services from './components/Services/Services.jsx'
 import SelectedWork from './components/SelectedWork/SelectedWork.jsx'
-import Process from './components/Process/Process.jsx'
-import Stack from './components/Stack/Stack.jsx'
+import Approach from './components/Approach/Approach.jsx'
 import About from './components/About/About.jsx'
 import Contact from './components/Contact/Contact.jsx'
 import Footer from './components/Footer/Footer.jsx'
@@ -17,8 +16,7 @@ function Home() {
       <Hero />
       <Services />
       <SelectedWork />
-      <Process />
-      <Stack />
+      <Approach />
       <About />
       <Contact />
       <Footer />
