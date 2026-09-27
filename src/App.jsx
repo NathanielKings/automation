@@ -8,6 +8,7 @@ import About from './components/About/About.jsx'
 import Contact from './components/Contact/Contact.jsx'
 import Footer from './components/Footer/Footer.jsx'
 import ProjectDetail from './components/ProjectDetail/ProjectDetail.jsx'
+import NotFound from './components/NotFound/NotFound.jsx'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop.jsx'
 
 function Home() {
@@ -19,41 +20,35 @@ function Home() {
       <Approach />
       <About />
       <Contact />
-      <Footer />
     </>
   )
 }
 
 function ProjectsPage() {
-  return (
-    <>
-      <SelectedWork />
-      <Footer />
-    </>
-  )
+  return <SelectedWork />
 }
 
 function ProjectDetailPage() {
-  return (
-    <>
-      <ProjectDetail />
-      <Footer />
-    </>
-  )
+  return <ProjectDetail />
 }
 
 function App() {
   return (
     <BrowserRouter>
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
       <ScrollToTop />
       <Navbar />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:slug" element={<ProjectDetailPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
+      <Footer />
     </BrowserRouter>
   )
 }

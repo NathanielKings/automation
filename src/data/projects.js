@@ -16,6 +16,10 @@ const projects = [
     heroImage: crmHero,
     workflowImage: crmWorkflow,
     screenshots: [crmShotA, crmShotB],
+    screenshotSizes: [
+      { width: 1597, height: 874 },
+      { width: 946, height: 2048 },
+    ],
   },
   {
     id: 2,

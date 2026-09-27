@@ -8,7 +8,8 @@ function ScrollToTop() {
     if (hash) {
       const el = document.getElementById(hash.slice(1))
       if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        el.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' })
       }
       return
     }

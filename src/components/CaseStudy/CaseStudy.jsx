@@ -151,6 +151,8 @@ function CaseStudy({ project, data }) {
               className={styles.workflowImage}
               src={project.workflowImage}
               alt={`${project.title} workflow`}
+              loading="lazy"
+              decoding="async"
             />
           )}
         </section>

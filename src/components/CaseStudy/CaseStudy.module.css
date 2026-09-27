@@ -33,6 +33,7 @@
 
 .flow {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
@@ -276,7 +277,7 @@
   background: var(--color-gray-500);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .flow {
     flex-direction: column;
     align-items: flex-start;
@@ -300,7 +301,9 @@
     height: 1.25rem;
     margin: 0 0 0 4px;
   }
+}
 
+@media (max-width: 800px) {
   .tools {
     grid-template-columns: 1fr;
   }

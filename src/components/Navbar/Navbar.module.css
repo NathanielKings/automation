@@ -145,14 +145,21 @@
     max-height: 0;
     overflow: hidden;
     opacity: 0;
+    visibility: hidden;
     transition:
       max-height 0.28s ease,
-      opacity 0.22s ease;
+      opacity 0.22s ease,
+      visibility 0s linear 0.28s;
   }
 
   .menuOpen {
     max-height: 560px;
     opacity: 1;
+    visibility: visible;
+    transition:
+      max-height 0.28s ease,
+      opacity 0.22s ease,
+      visibility 0s linear 0s;
   }
 
   .menuLink {

@@ -112,6 +112,28 @@ svg {
   border-radius: 4px;
 }
 
+.skip-link {
+  position: absolute;
+  left: var(--pad);
+  top: 0.75rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: var(--color-black);
+  color: var(--color-white);
+  transform: translateY(-250%);
+  transition: transform 0.15s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+main:focus {
+  outline: none;
+}
+
 .container {
   width: 100%;
   max-width: var(--max-width);

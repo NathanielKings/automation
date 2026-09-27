@@ -26,14 +26,21 @@ function Media({ project }) {
           <section className={styles.block}>
             <h2 className={styles.blockHeading}>Screenshots</h2>
             <div className={styles.screenshots}>
-              {project.screenshots.map((src, i) => (
-                <img
-                  className={styles.screenshot}
-                  key={`${src}-${i}`}
-                  src={src}
-                  alt={`${project.title} screenshot ${i + 1}`}
-                />
-              ))}
+              {project.screenshots.map((src, i) => {
+                const size = project.screenshotSizes?.[i]
+                return (
+                  <img
+                    className={styles.screenshot}
+                    key={`${src}-${i}`}
+                    src={src}
+                    alt={`${project.title} screenshot ${i + 1}`}
+                    width={size?.width}
+                    height={size?.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )
+              })}
             </div>
           </section>
         </Reveal>
@@ -47,6 +54,7 @@ function Media({ project }) {
               className={styles.videoFrame}
               src={embedUrl}
               title={`${project.title} demo`}
+              loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
@@ -129,6 +137,8 @@ function ProjectDetail() {
                   className={styles.workflowImage}
                   src={project.workflowImage}
                   alt={`${project.title} workflow`}
+                  loading="lazy"
+                  decoding="async"
                 />
               </section>
             </Reveal>
