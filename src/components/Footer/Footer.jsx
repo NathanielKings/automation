@@ -59,7 +59,7 @@ function Footer() {
 
           <div className={styles.bottom}>
             <span className={styles.copyright}>
-              &copy; 2026 Nathaniel Kings. All rights reserved.
+              &copy; {new Date().getFullYear()} Nathaniel Kings. All rights reserved.
             </span>
           </div>
         </Reveal>
