@@ -5,7 +5,7 @@ import styles from './Footer.module.css'
 const nav = [
   { label: 'Home', to: '/' },
   { label: 'Services', to: '/#services' },
-  { label: 'Work', to: '/#work' },
+  { label: 'Projects', to: '/#projects' },
   { label: 'Approach', to: '/#approach' },
   { label: 'About', to: '/#about' },
   { label: 'Contact', to: '/#contact' },

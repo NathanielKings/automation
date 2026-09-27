@@ -8,7 +8,7 @@ import styles from './Navbar.module.css'
 const links = [
   { label: 'Home', to: '/' },
   { label: 'Services', to: '/#services' },
-  { label: 'Work', to: '/#work' },
+  { label: 'Projects', to: '/#projects' },
   { label: 'Approach', to: '/#approach' },
   { label: 'About', to: '/#about' },
   { label: 'Contact', to: '/#contact' },
@@ -20,7 +20,7 @@ function Navbar() {
   const { pathname, hash } = useLocation()
 
   const activeTo = (() => {
-    if (pathname.startsWith('/projects')) return '/#work'
+    if (pathname.startsWith('/projects')) return '/#projects'
     if (pathname === '/') {
       if (hash) return `/#${hash.slice(1)}`
       return '/'

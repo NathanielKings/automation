@@ -110,7 +110,7 @@ function Hero() {
           </p>
 
           <div className={styles.actions}>
-            <Button href="#work">
+            <Button href="#projects">
               See My Work
               <ArrowRight size={18} aria-hidden="true" />
             </Button>

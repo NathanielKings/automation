@@ -8,12 +8,8 @@ const featured = projects[0]
 const supporting = projects.slice(1)
 
 function SelectedWork() {
-  const handleViewProject = () => {
-    sessionStorage.setItem('projectsScrollPosition', String(window.scrollY))
-  }
-
   return (
-    <section className={styles.section} id="work">
+    <section className={styles.section} id="projects">
       <div className="container">
         <Reveal>
           <div className={styles.head}>
@@ -34,7 +30,7 @@ function SelectedWork() {
               <span className={styles.toolsLabel}>Tools</span>
               {featured.tools.join(' · ')}
             </p>
-            <Link className={styles.link} to={`/projects/${featured.slug}`} onClick={handleViewProject}>
+            <Link className={styles.link} to={`/projects/${featured.slug}`}>
               View Project
               <ArrowRight size={15} aria-hidden="true" />
             </Link>
@@ -49,7 +45,7 @@ function SelectedWork() {
                 <h3 className={styles.cardTitle}>{project.title}</h3>
                 <p className={styles.cardDesc}>{project.description}</p>
                 <p className={styles.tools}>{project.tools.join(' · ')}</p>
-                <Link className={styles.link} to={`/projects/${project.slug}`} onClick={handleViewProject}>
+                <Link className={styles.link} to={`/projects/${project.slug}`}>
                   View Project
                   <ArrowRight size={15} aria-hidden="true" />
                 </Link>
