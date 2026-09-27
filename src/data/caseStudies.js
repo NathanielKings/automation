@@ -305,6 +305,88 @@ const caseStudies = {
       'Creates a more structured membership process',
     ],
   },
+
+  'document-signing-workflow': {
+    subtitle: 'Automating document delivery, electronic signatures, and completion tracking.',
+    processSteps: [
+      'Document Preparation',
+      'Signature Request',
+      'Recipient Signs',
+      'Status Update',
+      'Completion',
+    ],
+    toolsLabel: 'PDF.co · DocuSign',
+    problem: [
+      'Document signing can become a repetitive administrative process when documents have to be prepared, sent to recipients, monitored for completion, and manually followed up.',
+      'Without a structured workflow, it can be difficult to know which documents have been sent, which are still waiting for signatures, and which have been completed.',
+    ],
+    solution: [
+      'I built an automated document-signing workflow that connects document generation, electronic signature requests, and workflow automation.',
+      'The process prepares the required document, sends it through an electronic signature platform, and uses the resulting status to move the workflow forward.',
+      'This creates a more structured process for managing documents from preparation through completion.',
+    ],
+    howItWorks: [
+      {
+        number: '01',
+        title: 'Document Preparation',
+        body: 'The required document is prepared with the information needed for the signing process.',
+      },
+      {
+        number: '02',
+        title: 'Signature Request',
+        body: 'The completed document is submitted to the electronic-signature platform and a signing request is sent to the recipient.',
+      },
+      {
+        number: '03',
+        title: 'Recipient Signs',
+        body: 'The recipient reviews and electronically signs the document.',
+      },
+      {
+        number: '04',
+        title: 'Signature Status',
+        body: 'The workflow monitors the signing process and identifies the relevant status of the document.',
+      },
+      {
+        number: '05',
+        title: 'Completion',
+        body: 'Once the signing process is completed, the workflow can proceed with the appropriate completion action.',
+      },
+    ],
+    architecture: {
+      viewBox: '0 0 720 660',
+      labels: [],
+      nodes: [
+        { x: 240, y: 40, w: 240, h: 44, title: 'Document' },
+        { x: 240, y: 130, w: 240, h: 44, title: 'Preparation' },
+        { x: 240, y: 220, w: 240, h: 44, title: 'Signature Request' },
+        { x: 240, y: 310, w: 240, h: 44, title: 'Recipient' },
+        { x: 240, y: 400, w: 240, h: 44, title: 'E-Signature' },
+        { x: 240, y: 490, w: 240, h: 44, title: 'Status' },
+        { x: 240, y: 580, w: 240, h: 44, title: 'Completed' },
+      ],
+      edges: [
+        { x1: 360, y1: 84, x2: 360, y2: 130, arrow: true },
+        { x1: 360, y1: 174, x2: 360, y2: 220, arrow: true },
+        { x1: 360, y1: 264, x2: 360, y2: 310, arrow: true },
+        { x1: 360, y1: 354, x2: 360, y2: 400, arrow: true },
+        { x1: 360, y1: 444, x2: 360, y2: 490, arrow: true },
+        { x1: 360, y1: 534, x2: 360, y2: 580, arrow: true },
+      ],
+    },
+    tools: [
+      { name: 'PDF.co', description: 'Document and PDF processing.' },
+      { name: 'DocuSign', description: 'Electronic signature and signing workflow.' },
+    ],
+    improvements: [
+      'Reduces manual document handling',
+      'Structures the signing process',
+      'Automates signature-request delivery',
+      'Makes signing status easier to track',
+      'Reduces the need for manual follow-up',
+      'Creates a clearer document lifecycle',
+      'Helps move completed documents to the next stage automatically',
+    ],
+  },
 }
 
 export default caseStudies
